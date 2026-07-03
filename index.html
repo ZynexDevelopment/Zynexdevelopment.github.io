@@ -14,46 +14,29 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0f;
-            color: #fff;
-            overflow-x: hidden;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.6;
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0a0a0f;
+            background: #0d0d0d;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ff1744, #7c4dff);
-            border-radius: 10px;
+            background: #cc0000;
+            border-radius: 3px;
         }
 
-        /* ===== ANIMATED BACKGROUND ===== */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+        a {
+            color: #cc0000;
+            text-decoration: none;
         }
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            100% { opacity: 1; }
+        a:hover {
+            color: #ff1a1a;
         }
 
         /* ===== HEADER ===== */
@@ -62,106 +45,57 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
-            padding: 15px 50px;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 23, 68, 0.2);
+            z-index: 100;
+            background: #0d0d0d;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 18px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #e0e0e0;
         }
 
-        .logo-icon {
-            font-size: 28px;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { filter: drop-shadow(0 0 5px #ff1744); }
-            100% { filter: drop-shadow(0 0 20px #ff1744); }
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            color: #666;
-            letter-spacing: 4px;
-            font-weight: 300;
-            background: none;
-            -webkit-text-fill-color: #666;
+        .logo span {
+            color: #cc0000;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 30px;
         }
 
         .nav-links a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, #ff1744, #7c4dff);
-            transition: width 0.3s ease;
+            color: #888;
+            font-size: 14px;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
+            color: #e0e0e0;
         }
 
         .nav-links a.active {
-            color: #fff;
-        }
-
-        .nav-links a.active::before {
-            width: 100%;
+            color: #cc0000;
         }
 
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #ff1744;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            width: 24px;
+            height: 2px;
+            background: #888;
+            border-radius: 2px;
         }
 
         /* ===== HERO ===== */
@@ -173,224 +107,142 @@
             align-items: center;
             text-align: center;
             padding: 120px 20px 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(255, 23, 68, 0.08), transparent 60%);
-            animation: pulse-bg 4s infinite alternate;
-            z-index: -1;
-        }
-
-        @keyframes pulse-bg {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 1; }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 25px;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(124, 77, 255, 0.2));
-            border-radius: 50px;
-            font-size: 11px;
-            color: #ff1744;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 23, 68, 0.3);
+            background: #0d0d0d;
         }
 
         .hero-title {
-            font-size: 72px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 56px;
+            font-weight: 800;
+            color: #e0e0e0;
+            margin-bottom: 12px;
         }
 
-        .hero-title .highlight {
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-title span {
+            color: #cc0000;
         }
 
         .hero-desc {
-            font-size: 18px;
-            color: #888;
-            max-width: 600px;
-            line-height: 1.8;
-            margin-bottom: 35px;
+            font-size: 16px;
+            color: #777;
+            max-width: 550px;
+            margin-bottom: 28px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .btn {
-            padding: 14px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
+            padding: 12px 32px;
+            border-radius: 6px;
             font-size: 14px;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            font-weight: 600;
             border: none;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            background: #cc0000;
             color: #fff;
-            box-shadow: 0 0 30px rgba(255, 23, 68, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 50px rgba(255, 23, 68, 0.5);
+            background: #a30000;
         }
 
         .btn-secondary {
             background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255, 23, 68, 0.5);
+            color: #e0e0e0;
+            border: 1px solid #333;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 23, 68, 0.1);
-            transform: translateY(-3px);
-            border-color: #ff1744;
+            background: #1a1a1a;
         }
 
         .hero-stats {
             display: flex;
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        .stat {
-            text-align: center;
+            gap: 50px;
+            margin-top: 50px;
         }
 
         .stat-number {
-            display: block;
-            font-size: 42px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            font-weight: 700;
+            color: #cc0000;
         }
 
         .stat-label {
             font-size: 13px;
             color: #666;
-            letter-spacing: 2px;
         }
 
         /* ===== PROJECTS ===== */
         .projects {
-            padding: 80px 20px;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.9));
+            padding: 70px 20px;
+            background: #0a0a0a;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 42px;
-            font-weight: 900;
+            font-size: 32px;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
+            color: #e0e0e0;
         }
 
-        .section-title .highlight {
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .section-title span {
+            color: #cc0000;
         }
 
         .section-sub {
             text-align: center;
             color: #666;
-            font-size: 16px;
-            margin-bottom: 50px;
+            font-size: 14px;
+            margin-bottom: 40px;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px 25px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.05), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
+            background: #111;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 24px 22px;
+            transition: border-color 0.2s;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 23, 68, 0.3);
-            box-shadow: 0 20px 60px rgba(255, 23, 68, 0.1);
+            border-color: #cc0000;
         }
 
         .project-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-            display: inline-block;
-            animation: float 3s infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-8px); }
+            font-size: 32px;
+            margin-bottom: 10px;
         }
 
         .project-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 18px;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 6px;
         }
 
         .project-card p {
-            color: #888;
+            color: #777;
             font-size: 13px;
             line-height: 1.6;
             margin-bottom: 12px;
@@ -400,167 +252,153 @@
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
 
         .project-tags span {
-            padding: 3px 12px;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(124, 77, 255, 0.15));
-            border-radius: 50px;
+            padding: 2px 10px;
+            background: #1a1a1a;
+            border-radius: 4px;
             font-size: 10px;
-            color: #ff1744;
-            font-weight: 600;
+            color: #888;
+            font-weight: 500;
             letter-spacing: 0.5px;
         }
 
         .btn-project {
-            color: #ff1744;
-            text-decoration: none;
-            font-weight: 700;
+            color: #cc0000;
             font-size: 13px;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-weight: 600;
         }
 
         .btn-project:hover {
-            color: #7c4dff;
-            transform: translateX(5px);
+            color: #ff1a1a;
         }
 
         /* ===== ABOUT ===== */
         .about {
-            padding: 80px 20px;
-            position: relative;
-            z-index: 1;
+            padding: 70px 20px;
+            background: #0d0d0d;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1100px;
+            gap: 50px;
+            max-width: 1000px;
             margin: 0 auto;
+            align-items: center;
         }
 
         .about-text h2 {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #e0e0e0;
         }
 
         .about-text h2 span {
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #cc0000;
         }
 
         .about-text p {
-            color: #888;
+            color: #777;
             line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 14px;
+            margin-bottom: 16px;
         }
 
         .about-features {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 10px;
         }
 
         .about-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #aaa;
-            font-size: 14px;
+            color: #888;
+            font-size: 13px;
         }
 
         .about-feature .check {
-            color: #ff1744;
-            font-weight: 900;
+            color: #cc0000;
+            margin-right: 6px;
         }
 
         /* ===== FOOTER ===== */
         .footer {
-            padding: 50px 20px 25px;
-            border-top: 1px solid rgba(255, 23, 68, 0.1);
-            position: relative;
-            z-index: 1;
-            background: rgba(10, 10, 15, 0.9);
+            padding: 40px 20px 20px;
+            border-top: 1px solid #1a1a1a;
+            background: #0a0a0a;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
         }
 
         .footer-brand h3 {
-            font-size: 20px;
-            background: linear-gradient(135deg, #ff1744, #7c4dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 18px;
+            color: #e0e0e0;
+        }
+
+        .footer-brand h3 span {
+            color: #cc0000;
         }
 
         .footer-brand p {
-            color: #666;
-            font-size: 13px;
+            color: #555;
+            font-size: 12px;
         }
 
         .footer-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
 
         .footer-links a {
-            color: #888;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s ease;
+            color: #666;
+            font-size: 12px;
         }
 
         .footer-links a:hover {
-            color: #ff1744;
+            color: #e0e0e0;
         }
 
         .footer-social {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 23, 68, 0.3);
+            border: 1px solid #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            color: #666;
+            font-size: 16px;
+            transition: border-color 0.2s, color 0.2s;
         }
 
         .social-icon:hover {
-            border-color: #ff1744;
-            color: #ff1744;
-            transform: translateY(-3px) rotate(10deg);
-            box-shadow: 0 0 20px rgba(255, 23, 68, 0.2);
+            border-color: #cc0000;
+            color: #cc0000;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
-            margin-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #1a1a1a;
             color: #444;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -572,14 +410,14 @@
             .nav-links {
                 display: none;
                 flex-direction: column;
-                background: rgba(10, 10, 15, 0.98);
+                background: #0d0d0d;
                 position: absolute;
-                top: 70px;
+                top: 64px;
                 left: 0;
                 right: 0;
-                padding: 30px;
-                gap: 20px;
-                border-bottom: 1px solid rgba(255, 23, 68, 0.2);
+                padding: 20px;
+                gap: 14px;
+                border-bottom: 1px solid #1a1a1a;
             }
 
             .nav-links.open {
@@ -591,7 +429,7 @@
             }
 
             .hero-title {
-                font-size: 40px;
+                font-size: 36px;
             }
 
             .hero-stats {
@@ -617,7 +455,7 @@
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 30px;
+                font-size: 28px;
             }
 
             .hero-buttons {
@@ -634,34 +472,13 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
     </style>
 </head>
 <body>
 
-    <!-- ===== STARS ===== -->
-    <div class="stars" id="stars"></div>
-
     <!-- ===== HEADER ===== -->
     <header class="header">
-        <div class="logo">
-            <span class="logo-icon">⚡</span>
-            <div>
-                <span class="logo-text">ZYNEX</span>
-                <span class="logo-sub">DEV</span>
-            </div>
-        </div>
+        <div class="logo">Zynex<span>Dev</span></div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -677,30 +494,26 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="hero-badge">🔥 NEXT-GEN MINECRAFT PLUGINS</div>
-        <h1 class="hero-title">
-            <span class="highlight">Zynex</span>Development
-        </h1>
+        <h1 class="hero-title">Zynex<span>Development</span></h1>
         <p class="hero-desc">
-            Building the future of Minecraft server management<br>
-            with powerful, lightweight, and innovative solutions.
+            Building powerful, lightweight Minecraft plugins for server owners worldwide.
         </p>
         <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">Explore Projects</a>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
         </div>
         <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-number">7+</span>
-                <span class="stat-label">Plugins</span>
+            <div>
+                <div class="stat-number">7</div>
+                <div class="stat-label">Plugins</div>
             </div>
-            <div class="stat">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Satisfaction</span>
+            <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfaction</div>
             </div>
-            <div class="stat">
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">Support</span>
+            <div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
             </div>
         </div>
     </section>
@@ -708,100 +521,88 @@
     <!-- ===== PROJECTS ===== -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title">✨ <span class="highlight">Our</span> Projects</h2>
-            <p class="section-sub">7 powerful plugins crafted for your Minecraft server</p>
+            <h2 class="section-title">Our <span>Projects</span></h2>
+            <p class="section-sub">7 plugins crafted for your Minecraft server</p>
 
             <div class="project-grid">
-                <!-- 1. ZynexAdmin -->
+
                 <div class="project-card">
                     <div class="project-icon">⚡</div>
                     <h3>ZynexAdmin</h3>
-                    <p>Complete admin panel with GUI menu. Manage OPs, bans, warns, kicks, teleports, and more.</p>
+                    <p>Complete admin panel with GUI. Manage OPs, bans, warns, kicks, and more.</p>
                     <div class="project-tags">
                         <span>Admin</span>
                         <span>GUI</span>
-                        <span>Management</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexAdmin" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexAdmin" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 2. ZynexRTP -->
                 <div class="project-card">
                     <div class="project-icon">🌀</div>
                     <h3>ZynexRTP</h3>
-                    <p>Random teleport with GUI. Teleport to Overworld, Nether, or The End with permissions and cooldowns.</p>
+                    <p>Random teleport with GUI. Teleport to Overworld, Nether, or The End.</p>
                     <div class="project-tags">
                         <span>Teleport</span>
                         <span>GUI</span>
-                        <span>RTP</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexRTP" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexRTP" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 3. ZynexAntiCheat -->
                 <div class="project-card">
                     <div class="project-icon">🛡️</div>
                     <h3>ZynexAntiCheat</h3>
-                    <p>Lightweight anti-cheat system. Detects fly, speed, fast ladder, and more to keep your server safe.</p>
+                    <p>Lightweight anti-cheat. Detects fly, speed, fast ladder, and more.</p>
                     <div class="project-tags">
                         <span>AntiCheat</span>
                         <span>Security</span>
-                        <span>Protection</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexAntiCheat" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexAntiCheat" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 4. ZynexJob -->
                 <div class="project-card">
                     <div class="project-icon">💼</div>
                     <h3>ZynexJob</h3>
-                    <p>Complete job system with warns, blacklist, invites, demote/promote, and PlaceholderAPI support.</p>
+                    <p>Complete job system with warns, blacklist, invites, and PlaceholderAPI.</p>
                     <div class="project-tags">
                         <span>Jobs</span>
                         <span>Economy</span>
-                        <span>Ranks</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexJob" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexJob" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 5. ZynexParticles -->
                 <div class="project-card">
                     <div class="project-icon">🎆</div>
                     <h3>ZynexParticles</h3>
-                    <p>Ultimate particle plugin with 14+ stunning effects, infinity mode, and multi-version support (1.17-1.21).</p>
+                    <p>14+ stunning particle effects with infinity mode and multi-version support.</p>
                     <div class="project-tags">
                         <span>Particles</span>
                         <span>FX</span>
-                        <span>Visuals</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexParticle" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexParticle" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 6. ZynexLobby -->
                 <div class="project-card">
                     <div class="project-icon">🏠</div>
                     <h3>ZynexLobby</h3>
-                    <p>Simple lobby system. Set the lobby with /setlobby and teleport with /lobby.</p>
+                    <p>Simple lobby system. Set with /setlobby and teleport with /lobby.</p>
                     <div class="project-tags">
                         <span>Lobby</span>
                         <span>Spawn</span>
-                        <span>Teleport</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexLobby" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexLobby" target="_blank" class="btn-project">View →</a>
                 </div>
 
-                <!-- 7. ZynexBroadcast -->
                 <div class="project-card">
                     <div class="project-icon">📢</div>
                     <h3>ZynexBroadcast</h3>
-                    <p>Auto broadcast system. Send automatic messages with configurable intervals and color support.</p>
+                    <p>Auto broadcast system with configurable intervals and color support.</p>
                     <div class="project-tags">
                         <span>Broadcast</span>
                         <span>Auto</span>
-                        <span>Messages</span>
                     </div>
-                    <a href="https://github.com/kianxmine1/ZynexBroadcast" target="_blank" class="btn-project">View on GitHub →</a>
+                    <a href="https://github.com/kianxmine1/ZynexBroadcast" target="_blank" class="btn-project">View →</a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -813,22 +614,20 @@
                 <div class="about-text">
                     <h2>About <span>Zynex</span></h2>
                     <p>
-                        ZynexDevelopment is a passionate team dedicated to creating high-quality,
-                        lightweight, and innovative Minecraft plugins. Our goal is to make server
-                        management easier and more enjoyable for server owners worldwide.
+                        ZynexDevelopment is dedicated to creating high-quality, lightweight Minecraft plugins.
+                        Our goal is to make server management easy and enjoyable for server owners worldwide.
                     </p>
                     <p>
-                        With 7 powerful plugins and counting, we are committed to delivering the best
-                        experience for our users.
+                        With 7 plugins and counting, we deliver the best experience for our users.
                     </p>
                     <div class="about-features">
-                        <div class="about-feature"><span class="check">✔</span> Premium Quality</div>
-                        <div class="about-feature"><span class="check">✔</span> Lightweight & Fast</div>
-                        <div class="about-feature"><span class="check">✔</span> 24/7 Support</div>
-                        <div class="about-feature"><span class="check">✔</span> Regular Updates</div>
+                        <div class="about-feature"><span class="check">✓</span> Premium Quality</div>
+                        <div class="about-feature"><span class="check">✓</span> Lightweight</div>
+                        <div class="about-feature"><span class="check">✓</span> 24/7 Support</div>
+                        <div class="about-feature"><span class="check">✓</span> Regular Updates</div>
                     </div>
                 </div>
-                <div style="text-align:center; font-size: 100px; opacity: 0.2; user-select: none;">
+                <div style="font-size: 80px; text-align: center; opacity: 0.1; user-select: none; color: #cc0000;">
                     ⚡
                 </div>
             </div>
@@ -839,7 +638,7 @@
     <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>⚡ ZynexDevelopment</h3>
+                <h3>Zynex<span>Dev</span></h3>
                 <p>Powering Minecraft servers with premium plugins.</p>
             </div>
             <div class="footer-links">
@@ -850,32 +649,18 @@
             </div>
             <div class="footer-social">
                 <a href="https://github.com/kianxmine1" target="_blank" class="social-icon">🐙</a>
-                <a href="#" class="social-icon">📺</a>
+                <a href="#" class="social-icon">▶</a>
                 <a href="#" class="social-icon">💬</a>
-                <a href="#" class="social-icon">📧</a>
+                <a href="#" class="social-icon">✉</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 ZynexDevelopment. All rights reserved. | Made with ❤️ by Kian</p>
+            <p>© 2026 ZynexDevelopment. Made with ❤️ by Kian</p>
         </div>
     </footer>
 
     <script>
-        // ===== STARS =====
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            star.style.animationDuration = (2 + Math.random() * 3) + 's';
-            star.style.width = (1 + Math.random() * 3) + 'px';
-            star.style.height = star.style.width;
-            starsContainer.appendChild(star);
-        }
-
-        // ===== HAMBURGER =====
+        // Hamburger
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -891,7 +676,7 @@
             });
         });
 
-        // ===== SMOOTH SCROLL =====
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -902,7 +687,7 @@
             });
         });
 
-        // ===== ACTIVE LINK =====
+        // Active link
         const sections = document.querySelectorAll('section[id]');
         const navLinkItems = document.querySelectorAll('.nav-links a');
 
