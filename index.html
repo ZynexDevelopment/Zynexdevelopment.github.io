@@ -26,8 +26,34 @@
             background: #0a0a0f;
         }
         ::-webkit-scrollbar-thumb {
-            background: #ff1744;
+            background: linear-gradient(180deg, #ff1744, #7c4dff);
             border-radius: 10px;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
         }
 
         /* ===== HEADER ===== */
@@ -38,9 +64,9 @@
             right: 0;
             z-index: 1000;
             padding: 15px 50px;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(255, 23, 68, 0.3);
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 23, 68, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,48 +74,62 @@
 
         .logo {
             display: flex;
-            align-items: baseline;
-            gap: 8px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 5px #ff1744); }
+            100% { filter: drop-shadow(0 0 20px #ff1744); }
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 900;
-            color: #ff1744;
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
         }
 
         .logo-sub {
-            font-size: 12px;
-            color: #888;
+            font-size: 10px;
+            color: #666;
             letter-spacing: 4px;
             font-weight: 300;
+            background: none;
+            -webkit-text-fill-color: #666;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         .nav-links a {
             color: #aaa;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0%;
             height: 2px;
-            background: #ff1744;
+            background: linear-gradient(90deg, #ff1744, #7c4dff);
             transition: width 0.3s ease;
         }
 
@@ -97,15 +137,15 @@
             color: #fff;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
         .nav-links a.active {
-            color: #ff1744;
+            color: #fff;
         }
 
-        .nav-links a.active::after {
+        .nav-links a.active::before {
             width: 100%;
         }
 
@@ -133,36 +173,38 @@
             align-items: center;
             text-align: center;
             padding: 120px 20px 60px;
-            background: radial-gradient(ellipse at center, rgba(255, 23, 68, 0.1), transparent 70%);
             position: relative;
+            z-index: 1;
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff1744' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 23, 68, 0.08), transparent 60%);
+            animation: pulse-bg 4s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse-bg {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 8px 20px;
-            border: 1px solid rgba(255, 23, 68, 0.4);
+            padding: 8px 25px;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(124, 77, 255, 0.2));
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 11px;
             color: #ff1744;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 25px;
-            animation: pulse-border 2s infinite;
-        }
-
-        @keyframes pulse-border {
-            0%, 100% { border-color: rgba(255, 23, 68, 0.4); }
-            50% { border-color: rgba(255, 23, 68, 1); }
+            border: 1px solid rgba(255, 23, 68, 0.3);
         }
 
         .hero-title {
@@ -173,8 +215,9 @@
         }
 
         .hero-title .highlight {
-            color: #ff1744;
-            text-shadow: 0 0 40px rgba(255, 23, 68, 0.3);
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
@@ -193,7 +236,7 @@
         }
 
         .btn {
-            padding: 14px 40px;
+            padding: 14px 45px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
@@ -202,28 +245,31 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff1744, #d50000);
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
             color: #fff;
             box-shadow: 0 0 30px rgba(255, 23, 68, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 0 0 50px rgba(255, 23, 68, 0.5);
         }
 
         .btn-secondary {
             background: transparent;
             color: #fff;
-            border: 2px solid #ff1744;
+            border: 2px solid rgba(255, 23, 68, 0.5);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 23, 68, 0.1);
             transform: translateY(-3px);
+            border-color: #ff1744;
         }
 
         .hero-stats {
@@ -240,11 +286,13 @@
             display: block;
             font-size: 42px;
             font-weight: 900;
-            color: #ff1744;
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
             letter-spacing: 2px;
         }
@@ -252,7 +300,9 @@
         /* ===== PROJECTS ===== */
         .projects {
             padding: 80px 20px;
-            background: linear-gradient(180deg, #0a0a0f, #0d0d18);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.9));
         }
 
         .container {
@@ -268,7 +318,9 @@
         }
 
         .section-title .highlight {
-            color: #ff1744;
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-sub {
@@ -286,7 +338,8 @@
 
         .project-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 23, 68, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 30px 25px;
             transition: all 0.4s ease;
@@ -294,22 +347,46 @@
             overflow: hidden;
         }
 
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
         .project-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(255, 23, 68, 0.4);
+            border-color: rgba(255, 23, 68, 0.3);
             box-shadow: 0 20px 60px rgba(255, 23, 68, 0.1);
         }
 
         .project-icon {
             font-size: 42px;
             margin-bottom: 15px;
+            display: inline-block;
+            animation: float 3s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
         }
 
         .project-card h3 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #fff;
+            background: linear-gradient(135deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .project-card p {
@@ -328,7 +405,7 @@
 
         .project-tags span {
             padding: 3px 12px;
-            background: rgba(255, 23, 68, 0.15);
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(124, 77, 255, 0.15));
             border-radius: 50px;
             font-size: 10px;
             color: #ff1744;
@@ -346,14 +423,15 @@
         }
 
         .btn-project:hover {
-            color: #fff;
+            color: #7c4dff;
             transform: translateX(5px);
         }
 
         /* ===== ABOUT ===== */
         .about {
             padding: 80px 20px;
-            background: #0a0a0f;
+            position: relative;
+            z-index: 1;
         }
 
         .about-content {
@@ -369,6 +447,12 @@
             font-size: 36px;
             font-weight: 900;
             margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .about-text p {
@@ -401,7 +485,9 @@
         .footer {
             padding: 50px 20px 25px;
             border-top: 1px solid rgba(255, 23, 68, 0.1);
-            background: #0a0a0f;
+            position: relative;
+            z-index: 1;
+            background: rgba(10, 10, 15, 0.9);
         }
 
         .footer-content {
@@ -416,7 +502,9 @@
 
         .footer-brand h3 {
             font-size: 20px;
-            color: #ff1744;
+            background: linear-gradient(135deg, #ff1744, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .footer-brand p {
@@ -462,7 +550,8 @@
         .social-icon:hover {
             border-color: #ff1744;
             color: #ff1744;
-            transform: translateY(-3px);
+            transform: translateY(-3px) rotate(10deg);
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.2);
         }
 
         .footer-bottom {
@@ -490,7 +579,7 @@
                 right: 0;
                 padding: 30px;
                 gap: 20px;
-                border-bottom: 2px solid rgba(255, 23, 68, 0.3);
+                border-bottom: 1px solid rgba(255, 23, 68, 0.2);
             }
 
             .nav-links.open {
@@ -561,11 +650,17 @@
 </head>
 <body>
 
+    <!-- ===== STARS ===== -->
+    <div class="stars" id="stars"></div>
+
     <!-- ===== HEADER ===== -->
     <header class="header">
         <div class="logo">
-            <span class="logo-text">⚡ ZYNEX</span>
-            <span class="logo-sub">DEVELOPMENT</span>
+            <span class="logo-icon">⚡</span>
+            <div>
+                <span class="logo-text">ZYNEX</span>
+                <span class="logo-sub">DEV</span>
+            </div>
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#" class="active">Home</a></li>
@@ -582,21 +677,21 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="hero-badge">🔥 PREMIUM MINECRAFT PLUGINS</div>
+        <div class="hero-badge">🔥 NEXT-GEN MINECRAFT PLUGINS</div>
         <h1 class="hero-title">
             <span class="highlight">Zynex</span>Development
         </h1>
         <p class="hero-desc">
-            Crafting powerful, lightweight, and innovative Minecraft plugins<br>
-            for server owners worldwide.
+            Building the future of Minecraft server management<br>
+            with powerful, lightweight, and innovative solutions.
         </p>
         <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            <a href="#projects" class="btn btn-primary">Explore Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
         </div>
         <div class="hero-stats">
             <div class="stat">
-                <span class="stat-number">7</span>
+                <span class="stat-number">7+</span>
                 <span class="stat-label">Plugins</span>
             </div>
             <div class="stat">
@@ -613,16 +708,15 @@
     <!-- ===== PROJECTS ===== -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title">🔥 <span class="highlight">Our</span> Projects</h2>
+            <h2 class="section-title">✨ <span class="highlight">Our</span> Projects</h2>
             <p class="section-sub">7 powerful plugins crafted for your Minecraft server</p>
 
             <div class="project-grid">
-
                 <!-- 1. ZynexAdmin -->
                 <div class="project-card">
                     <div class="project-icon">⚡</div>
                     <h3>ZynexAdmin</h3>
-                    <p>Complete admin panel with GUI menu. Manage OPs, bans, warns, kicks, teleports, player lists, and broadcasts with ease.</p>
+                    <p>Complete admin panel with GUI menu. Manage OPs, bans, warns, kicks, teleports, and more.</p>
                     <div class="project-tags">
                         <span>Admin</span>
                         <span>GUI</span>
@@ -635,7 +729,7 @@
                 <div class="project-card">
                     <div class="project-icon">🌀</div>
                     <h3>ZynexRTP</h3>
-                    <p>Random teleport plugin with GUI. Teleport to Overworld, Nether, or The End with permissions, cooldowns, and configurable distances.</p>
+                    <p>Random teleport with GUI. Teleport to Overworld, Nether, or The End with permissions and cooldowns.</p>
                     <div class="project-tags">
                         <span>Teleport</span>
                         <span>GUI</span>
@@ -648,7 +742,7 @@
                 <div class="project-card">
                     <div class="project-icon">🛡️</div>
                     <h3>ZynexAntiCheat</h3>
-                    <p>Lightweight anti-cheat system. Detects fly, speed, fast ladder, and more to keep your server safe from hackers.</p>
+                    <p>Lightweight anti-cheat system. Detects fly, speed, fast ladder, and more to keep your server safe.</p>
                     <div class="project-tags">
                         <span>AntiCheat</span>
                         <span>Security</span>
@@ -661,7 +755,7 @@
                 <div class="project-card">
                     <div class="project-icon">💼</div>
                     <h3>ZynexJob</h3>
-                    <p>Complete job system with warns, blacklist, invites, demote/promote, and PlaceholderAPI support for scoreboards.</p>
+                    <p>Complete job system with warns, blacklist, invites, demote/promote, and PlaceholderAPI support.</p>
                     <div class="project-tags">
                         <span>Jobs</span>
                         <span>Economy</span>
@@ -674,7 +768,7 @@
                 <div class="project-card">
                     <div class="project-icon">🎆</div>
                     <h3>ZynexParticles</h3>
-                    <p>Ultimate particle plugin with 14+ stunning effects, infinity mode, stop system, and multi-version support (1.17-1.21).</p>
+                    <p>Ultimate particle plugin with 14+ stunning effects, infinity mode, and multi-version support (1.17-1.21).</p>
                     <div class="project-tags">
                         <span>Particles</span>
                         <span>FX</span>
@@ -687,7 +781,7 @@
                 <div class="project-card">
                     <div class="project-icon">🏠</div>
                     <h3>ZynexLobby</h3>
-                    <p>Simple lobby system. Admins can set the lobby with /setlobby and players can teleport to it with /lobby.</p>
+                    <p>Simple lobby system. Set the lobby with /setlobby and teleport with /lobby.</p>
                     <div class="project-tags">
                         <span>Lobby</span>
                         <span>Spawn</span>
@@ -700,7 +794,7 @@
                 <div class="project-card">
                     <div class="project-icon">📢</div>
                     <h3>ZynexBroadcast</h3>
-                    <p>Auto broadcast system. Send automatic messages to players with configurable intervals, random order, and color support.</p>
+                    <p>Auto broadcast system. Send automatic messages with configurable intervals and color support.</p>
                     <div class="project-tags">
                         <span>Broadcast</span>
                         <span>Auto</span>
@@ -708,7 +802,6 @@
                     </div>
                     <a href="https://github.com/kianxmine1/ZynexBroadcast" target="_blank" class="btn-project">View on GitHub →</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -718,7 +811,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About <span style="color:#ff1744;">Zynex</span></h2>
+                    <h2>About <span>Zynex</span></h2>
                     <p>
                         ZynexDevelopment is a passionate team dedicated to creating high-quality,
                         lightweight, and innovative Minecraft plugins. Our goal is to make server
@@ -735,7 +828,7 @@
                         <div class="about-feature"><span class="check">✔</span> Regular Updates</div>
                     </div>
                 </div>
-                <div style="text-align:center; font-size: 100px; opacity: 0.3; user-select: none;">
+                <div style="text-align:center; font-size: 100px; opacity: 0.2; user-select: none;">
                     ⚡
                 </div>
             </div>
@@ -768,7 +861,21 @@
     </footer>
 
     <script>
-        // Hamburger menu
+        // ===== STARS =====
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (2 + Math.random() * 3) + 's';
+            star.style.width = (1 + Math.random() * 3) + 'px';
+            star.style.height = star.style.width;
+            starsContainer.appendChild(star);
+        }
+
+        // ===== HAMBURGER =====
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -784,7 +891,7 @@
             });
         });
 
-        // Smooth scroll
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -795,7 +902,7 @@
             });
         });
 
-        // Active link on scroll
+        // ===== ACTIVE LINK =====
         const sections = document.querySelectorAll('section[id]');
         const navLinkItems = document.querySelectorAll('.nav-links a');
 
